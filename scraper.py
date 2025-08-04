@@ -5,6 +5,8 @@ from serpapi import GoogleSearch
 import os
 from dotenv import load_dotenv
 
+load_dotenv()
+
 def scrape_google_jobs(keyword='engineer',location='United States'):
     api_key = os.getenv("SERP_APIKEY")  # 🔒 Replace with your key
     params = {
