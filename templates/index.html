@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Scraper</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    {% if loading %}
+    <p style="color: blue; font-weight: bold;">🔍 Searching... Please wait.</p>
+    {% endif %}
+
+    <h1>Job Scraper</h1>
+    <form method="POST">
+        <label>Keyword:</label>
+        <input type="text" name="keyword" placeholder="Enter job keyword" required value="{{ keyword }}">
+        <label>Location:</label>
+        <input type="text" name="location" value="{{ location }}" placeholder="e.g. Remote, USA, Mars">
+        <button type="submit">Search</button>
+    </form>
+
+
+    {% if jobs %}
+    <h2>Results for "{{ keyword }}"</h2>
+    <p>**Note RemoteOK doesn't support location query yet'</p>
+    <a href="/download"> Download CSV</a>
+    <table>
+        <tr><th>Source</th><th>Title</th><th>Company</th><th>Link</th><th>$$$</th><th>📍</th></tr>
+        {% for job in jobs %}
+        <tr>
+            <td>{{ job.source }}</td>
+            <td>{{ job.title }}</td>
+            <td>{{ job.company }}</td>
+            <td><a href="{{ job.link }}" target="_blank">View</a></td>
+            <td>{{ job.salary }}</td>
+            <td>{{ job.location }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% elif keyword %}
+    <p>No jobs found for "{{ keyword }}".</p>
+    {% endif %}
+</body>
+</html>
