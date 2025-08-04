@@ -3,4 +3,5 @@ pandas
 requests
 beautifulsoup4
 serpapi
+google-search-results
 dotenv
