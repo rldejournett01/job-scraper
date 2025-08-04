@@ -153,7 +153,31 @@
     </style>
   </head>
   <body>
-    <h1>Job Scraper &#128511;</h1>
+    <!-- Today's Economy Headlines -->
+    {% if economy_news %}
+    <section
+      style="
+        background: #fffbe6;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      "
+    >
+      <h2 style="margin-top: 0">📈 Today's Economy Headlines</h2>
+      <ul style="padding-left: 1.2rem">
+        {% for article in economy_news %}
+        <li style="margin-bottom: 8px">
+          <a href="{{ article.link }}" target="_blank" style="color: #0066ff"
+            >{{ article.title }}</a
+          >
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    <h1>The Scruffy Job Scruffer &#128511;</h1>
 
     <!-- Loading Spinner -->
     <div id="loadingMessage">
