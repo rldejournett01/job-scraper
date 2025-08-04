@@ -23,6 +23,7 @@ Flask-Migrate==4.1.0
 Flask-RESTful==0.3.8
 Flask-SQLAlchemy==3.1.1
 Flask-WTF==1.2.2
+google_search_results==2.4.2
 greenlet==3.2.3
 gunicorn==23.0.0
 h11==0.16.0
